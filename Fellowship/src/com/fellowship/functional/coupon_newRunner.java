@@ -16,6 +16,7 @@ public class coupon_newRunner
 	public static void main(String[] args) 
 	{
 		System.out.println("Enter the Number of coupons U want..!");
+		System.out.println("Working");
 
 		// n->to get numbers from user
 		int n = Utility.getInt();
