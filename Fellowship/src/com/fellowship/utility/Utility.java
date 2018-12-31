@@ -33,7 +33,7 @@ public class Utility {
 	}
 
 	/** 
-	 * Method to get word from String  
+	 * Method to get word from String.
 	 */
 	public static String getWord() 
 	{
