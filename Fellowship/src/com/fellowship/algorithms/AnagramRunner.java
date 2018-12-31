@@ -1,5 +1,5 @@
 /******************************************************************************
- * purpose : Program to check Given two String is Anagram or Not
+ * purpose : Program to check Given two String is Anagram or Not.
  * 
  * @author Ansar
  * @version 1.2
