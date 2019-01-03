@@ -39,6 +39,10 @@ public class UnOrderedLinkedListRunner
 					System.out.print("Enter the element to be searched : ");
 					String ele = Utility.getLine();
 					unOrdList.search(ele);
+					System.out.println("Result After search : ");
+					System.out.println(unOrdList);
+					System.out.println("Do you want to continue the search y->Yes n->No ");
+					check = Utility.getLine();
 				}while(check.equalsIgnoreCase("y"));
 			}									
 		} catch (IOException e) {

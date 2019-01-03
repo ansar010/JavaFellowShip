@@ -31,7 +31,7 @@ public class UnOrderedListUtility
 			head = n;
 			return true;
 		}
-		
+
 		//To iterate over the node to find last node 
 		while(tempHead.next!=null)
 		{
@@ -40,52 +40,58 @@ public class UnOrderedListUtility
 		tempHead.next=n;
 		return true;
 	}
-	
-	
 
-	public boolean search(String ele)
-	{
+	public boolean search(Object data)
+	{	
+		Node temp = head;
 		if(head==null)
 		{
-			System.out.println("There is no element to search.. ");
+			System.out.println("No data to be search..");
+			return false;
 		}
-		Node t = head;
-		while(t.next!=null)
+		while(temp!=null)
 		{
-			if(t.data.equals(ele))
+			if(temp.data.equals(data))
 			{
-				remove(ele);
+				remove(data);
 				return true;
 			}
-			t=t.next;
+			temp=temp.next;
 		}
+		add(data);
 		return true;
 	}
 
 
 
-	private boolean remove(String ele) 
-	{	
-		Node t = head;
+	public boolean remove(Object data) 
+	{
+		Node temp = head;
 		if(head==null)
 		{
-			System.out.println("No Element to delete..!");
+			System.out.println("No data to delete..");
+			return false;
 		}
-		
-		Node prev=t;
-		Node temp=prev;
-		while(t.next!=null)
+		Node prev=temp;
+		Node q=prev;
+		while(temp.next!=null)
 		{
-			//if the searched data is in first node
-			if(head.data.equals(ele))
+			if(head.data.equals(data))
 			{
-				head=t.next;
-				t.next=null;
+				head=temp.next;
+				temp.next=null;
 				return true;
 			}
-			
-			//if the searched element next to head
-			if(prev)
+			prev=temp.next;
+			if(prev.data.equals(data))
+			{
+				prev.next=temp.next;
+				temp.next=null;
+				return true;
+			}
+			temp=temp.next;
 		}
-	}
+		
+		return true;
+}
 }

@@ -20,7 +20,7 @@ public class Utility {
 	/**
 	 * static Scanner and Random class objects to to call inbuilt methods 
 	 */
-	static Scanner sc = new Scanner(System.in);
+	static Scanner scanner = new Scanner(System.in);
 	static Random rand = new Random();
 
 	/**
@@ -28,7 +28,7 @@ public class Utility {
 	 */
 	public static char getChar() 
 	{
-		char ch = sc.next().charAt(0);
+		char ch = scanner.next().charAt(0);
 		return ch;
 	}
 
@@ -37,7 +37,7 @@ public class Utility {
 	 */
 	public static String getWord() 
 	{
-		String word = sc.next();
+		String word = scanner.next();
 		return word;
 	}
 
@@ -46,7 +46,7 @@ public class Utility {
 	 */
 	public static String getLine()
 	{
-		String str = sc.nextLine();
+		String str = scanner.nextLine();
 		return str;
 	}
 
@@ -55,7 +55,7 @@ public class Utility {
 	 */
 	public static int getInt()
 	{
-		int i = sc.nextInt();
+		int i = scanner.nextInt();
 		return i;
 	}
 
@@ -64,7 +64,7 @@ public class Utility {
 	 */
 	public static Long getLong()
 	{
-		long l = sc.nextLong();
+		long l = scanner.nextLong();
 		return l;
 	}
 
@@ -73,7 +73,7 @@ public class Utility {
 	 */
 	public static float getFloat()
 	{
-		float f = sc.nextFloat();
+		float f = scanner.nextFloat();
 		return f;
 	}
 
@@ -82,7 +82,7 @@ public class Utility {
 	 */
 	public static double getDouble()
 	{
-		Double d = sc.nextDouble();
+		Double d = scanner.nextDouble();
 		return d;
 	}
 	/**
@@ -195,7 +195,7 @@ public class Utility {
 		if(n<0) //To Ensure Positive integer
 		{
 			System.out.println("Enter positive integer..!!");
-			n = sc.nextInt();
+			n = scanner.nextInt();
 			flipCoin(n); //recursive approach
 		}
 		else {
@@ -206,7 +206,7 @@ public class Utility {
 			do
 			{
 				System.out.println("\nEnter:\n 1-> To flip coin.\n 0-> To Exit.");
-				response=sc.nextInt();
+				response=scanner.nextInt();
 				if(response==1)
 				{
 					if(cointoss()==1)  // Calling method to Toss Coin
@@ -271,7 +271,7 @@ public class Utility {
 		if(length<4&&length>4)
 		{
 			System.err.println("Enter 4 Digit year");
-			year=sc.nextInt();
+			year=scanner.nextInt();
 			isLeapYear(year);
 		}
 		else
@@ -309,7 +309,7 @@ public class Utility {
 		else
 		{
 			System.out.println("n shoud be less than 31...!");
-			n=sc.nextInt();
+			n=scanner.nextInt();
 			powerSeries(n);//recursive approach
 		}
 	}
@@ -356,7 +356,7 @@ public class Utility {
 		else
 		{
 			System.out.println("n value shoud be greater than 0..!");
-			n=sc.nextInt();
+			n=scanner.nextInt();
 			nHarmonicValue(n); // recursively calling same method until user give valid input
 		}
 	}
@@ -379,8 +379,6 @@ public class Utility {
 		}
 		return sum;
 	}
-
-
 
 
 	//*********************************************************************************************
@@ -566,7 +564,7 @@ public class Utility {
 				for(int j=0;j<col;j++)
 				{
 					// To write Elements in corresponding text File
-					bw.write((arr[i][j]=sc.nextInt())+" ");
+					bw.write((arr[i][j]=scanner.nextInt())+" ");
 				}
 				bw.newLine();
 			}
