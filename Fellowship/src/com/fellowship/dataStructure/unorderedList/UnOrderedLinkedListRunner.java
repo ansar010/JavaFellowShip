@@ -19,7 +19,7 @@ public class UnOrderedLinkedListRunner
 		BufferedReader bufReader = new BufferedReader(filereader);
 		
 		//Creating linkedLis Object to utilize its methods
-		UnOrderedListUtility unOrdList = new UnOrderedListUtility();
+		UnOrderedList<String> unOrdList = new UnOrderedList<>();
 
 		String line; //total number of line/content present in file
 

@@ -3,21 +3,21 @@
  */
 package com.fellowship.dataStructure.unorderedList;
 
-public class UnOrderedListUtility
+public class UnOrderedList<T>
 {
 	//Nested class for node 
-	class Node
+	class Node<T>
 	{
-		Object data;//the node's data
-		Node next;
+		T data;//the node's data
+		Node<T> next;
 
-		public Node(Object data)
+		public Node(T data)
 		{
 			this.data = data;
 		}
 	}
 
-	private Node head;//Initial node head(null)
+	private Node<T> head;//Initial node head(null)
 
 	public boolean add(Object data) 
 	{
@@ -41,7 +41,7 @@ public class UnOrderedListUtility
 		return true;
 	}
 
-	public boolean search(Object data)
+	public boolean search(T data)
 	{	
 		Node temp = head;
 		if(head==null)
@@ -64,7 +64,7 @@ public class UnOrderedListUtility
 
 
 
-	public boolean remove(Object data) 
+	public boolean remove(T data) 
 	{
 		Node pre = head;
 		if(head==null)
@@ -92,7 +92,7 @@ public class UnOrderedListUtility
 		return true;
 	}
 
-	private void remove1(Object data, Node prev, Node temp) 
+	private void remove1(T data, Node prev, Node temp) 
 	{
 		if(head==null)
 		{
