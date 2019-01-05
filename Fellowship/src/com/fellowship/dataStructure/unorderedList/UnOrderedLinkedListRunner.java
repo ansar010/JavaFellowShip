@@ -1,4 +1,4 @@
-package com.fellowship.DataStructure.UnorderedList;
+package com.fellowship.dataStructure.unorderedList;
 
 import java.io.BufferedReader;
 import java.io.File;

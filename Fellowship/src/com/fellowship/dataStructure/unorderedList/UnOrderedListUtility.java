@@ -1,7 +1,7 @@
 /**
  * purpose : write frequently called methods to create unordered linked list
  */
-package com.fellowship.DataStructure.UnorderedList;
+package com.fellowship.dataStructure.unorderedList;
 
 public class UnOrderedListUtility
 {
