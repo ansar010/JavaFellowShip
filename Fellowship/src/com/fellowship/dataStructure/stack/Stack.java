@@ -6,7 +6,7 @@ public class Stack
 	//Nested class for node
 	private class Node
 	{
-		Object data;//sack's data
+		Object data;//stack's data
 		Node next;//address of next node
 
 		//Constructor to initialize data
