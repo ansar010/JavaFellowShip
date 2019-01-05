@@ -66,32 +66,55 @@ public class UnOrderedListUtility
 
 	public boolean remove(Object data) 
 	{
-		Node temp = head;
+		Node pre = head;
 		if(head==null)
 		{
 			System.out.println("No data to delete..");
 			return false;
 		}
-		Node prev=temp;
-		Node q=prev;
-		while(temp.next!=null)
+		Node temp=pre;
+		while(pre.next!=null)
 		{
 			if(head.data.equals(data))
 			{
-				head=temp.next;
-				temp.next=null;
+				head=pre.next;
+				pre.next=null;
 				return true;
 			}
-			prev=temp.next;
-			if(prev.data.equals(data))
+			temp=pre.next;
+			if(temp.data.equals(data))
 			{
-				prev.next=temp.next;
-				temp.next=null;
+				remove1(data,pre,temp);
 				return true;
 			}
-			temp=temp.next;
+			pre=pre.next;
 		}
-		
 		return true;
-}
+	}
+
+	private void remove1(Object data, Node prev, Node temp) 
+	{
+		if(head==null)
+		{
+			System.out.println("no element in the list");
+		}
+		else
+		{
+			prev.next=temp.next;
+			temp.next=null;
+		}		
+	}
+
+	@Override
+	public String toString()
+	{
+		Node t=head;
+
+		while(t!=null)
+		{
+			System.out.println(t.data+" ");
+			t=t.next;
+		}
+		return " ";
+	}
 }
