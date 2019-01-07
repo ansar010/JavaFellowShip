@@ -4,7 +4,7 @@ public class Hashing
 {
 	public static void main(String args[])
 	{
-		Integer array[] = {33,44,55,64,34,23,22,121,11,21,14};
+		Integer array[] = {33,55,54,55,64,34,23,121,11,21,14};
 		OrderedList<Integer> arr[] =new OrderedList[array.length];
 		int index=0;
 		for(int i=0;i<arr.length;i++)

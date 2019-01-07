@@ -8,6 +8,7 @@
  *************************************************************************/
 package com.fellowship.dataStructure.stack;
 
+
 public class Stack
 {
 	int length;
