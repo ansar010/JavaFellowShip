@@ -13,7 +13,7 @@ public class Main {
 		BufferedReader bufferedReader=new BufferedReader(fileReader);
 		String line;
 		int number[];
-		orderedLinkedList myLinkedList1=new orderedLinkedList();
+		OrderedLinkedList myLinkedList1=new OrderedLinkedList();
 
 		try
 		{

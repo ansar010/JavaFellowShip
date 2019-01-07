@@ -1,6 +1,6 @@
 package com.fellowship.dataStructure.orderedLinkedList;
 
-public class orderedLinkedList 
+public class OrderedLinkedList 
 {
 	class Node
 	{
@@ -12,7 +12,8 @@ public class orderedLinkedList
 		}
 	}
 	private Node head;
-	boolean add(Object data)
+
+	public boolean add(Object data)
 	{
 		System.out.println("data1="+data);
 		Node n=new Node(data);
@@ -44,6 +45,7 @@ public class orderedLinkedList
 		prev.next=n;
 		return true;
 	}
+
 	public boolean search(Object data)
 	{
 		if(head==null)
@@ -67,7 +69,7 @@ public class orderedLinkedList
 		return true;
 	}
 
-	private boolean pop(Object data) {
+	public boolean pop(Object data) {
 
 		Node t=head;
 		if(head==null)
@@ -102,7 +104,8 @@ public class orderedLinkedList
 		return true;
 
 	}
-	private void remove(Object data, Node prev,Node t) {
+	
+	public void remove(Object data, Node prev,Node t) {
 		if(head==null)
 		{
 			System.out.println("no element in the list");
@@ -113,6 +116,7 @@ public class orderedLinkedList
 			t.next=null;
 		}
 	}
+	
 	@Override
 	public String toString() {
 		Node t=head;
