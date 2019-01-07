@@ -1,3 +1,11 @@
+/*************************************************************************
+ * purpose : program to create stack and it's functionalities
+ * 
+ * @author Ansar
+ * @version 1.2
+ * @since 7/01/2019
+ * 
+ *************************************************************************/
 package com.fellowship.dataStructure.stack;
 
 public class Stack

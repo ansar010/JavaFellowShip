@@ -1,3 +1,11 @@
+/*************************************************************************
+ * purpose : program to run cash counter
+ * 
+ * @author Ansar
+ * @version 1.2
+ * @since 7/01/2019
+ * 
+ *************************************************************************/
 package com.fellowship.dataStructure.queue;
 
 import com.fellowship.utility.Utility;

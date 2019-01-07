@@ -1,3 +1,11 @@
+/*************************************************************************
+ * purpose : program to create queue and it's functionalities
+ * 
+ * @author Ansar
+ * @version 1.2
+ * @since 7/01/2019
+ * 
+ *************************************************************************/
 package com.fellowship.dataStructure.queue;
 
 import com.fellowship.utility.Utility;
@@ -9,13 +17,17 @@ public class Queue
 	int capacity=0;
 	Object value[];//an Array of data
 
+	//constructor for create queue and initialize  queue's members
 	public Queue(int cap)
 	{
 		this.value=new Object[cap];
 		this.capacity=cap;
 	}
 	//=================================cashCounter=============================
-
+	/**
+	 * purpose : Method for cashCounter to maintain bank balance 
+	 * @param numOfperson takes persons to add in queue
+	 */
 	public void cashCounter(int numOfperson) 
 	{	
 		int temp=numOfperson;
@@ -29,6 +41,7 @@ public class Queue
 			enqueue(name);//calling enqueue to add persons 
 		}
 
+		//loop to get user choice 
 		do 
 		{
 			System.out.println("---------bank cash counter-------");
@@ -42,7 +55,7 @@ public class Queue
 			case 1:
 				System.out.print("Enter the amount you want to Deposit : ");
 				int depositAmount = Utility.getInt();
-
+				//calling method deposit amount and check balance 
 				bank(depositAmount,choice);
 				numOfperson--;
 				dequeue();
@@ -69,28 +82,27 @@ public class Queue
 		}while(numOfperson>0);
 
 	}
-	//=================================size====================================
-	public Object size() 
+
+	//=================================enqueue=================================
+	/**
+	 * purpose : Enqueue method to add users in queue
+	 * @param data takes from user
+	 */
+	public void enqueue(Object data) 
 	{
-		if(rear==-1 && front == -1) 
-			return 0;
-
-		if(rear>-1 && front==0)
-			return rear+1;
-
-		if(front>-1 && rear >-1)
+		if(rear==capacity)
 		{
-			return (rear-front)+1;
+			System.out.println("Queue overflowed..!");
 		}
-
-		if(front==rear)
-		{
-			return 0;
-		}
-
-		return true;	
-
+		//	System.out.println(value.length);
+		value[++rear]=data;
 	}
+
+	//=================================dequeue=================================
+	/**
+	 * purpose : Dequeue method to remove persons from queue
+	 * @return removed data
+	 */
 	public Object dequeue() 
 	{
 		if(rear==front || rear==-1)
@@ -104,7 +116,15 @@ public class Queue
 		}
 	}
 
+	//=================================bank====================================
+
 	long bankBalance=2000;//Initial bank balance
+	/**
+	 * purpose : bank method to perform banking operations
+	 * @param amount takes from user
+	 * @param choice of deposit or withdraw
+	 * @return true if user done baking else false
+	 */
 	private boolean bank(int amount, int choice)
 	{
 		if(choice==1)
@@ -130,21 +150,40 @@ public class Queue
 
 		}
 	}
-	//=================================enqueue=================================
-	public void enqueue(Object data) 
-	{
-		if(rear==capacity)
-		{
-			System.out.println("Queue overflowed..!");
-		}
-		//	System.out.println(value.length);
-		value[++rear]=data;
 
-		//		if(front==-1)
-		//			front=0;
+
+	//=================================size====================================
+
+	/**
+	 * purpose : To calculate the size of queue
+	 * @return size of queue
+	 */
+	public Object size() 
+	{
+		if(rear==-1 && front == -1) 
+			return 0;
+
+		if(rear>-1 && front==0)
+			return rear+1;
+
+		if(front>-1 && rear >-1)
+		{
+			return (rear-front)+1;
+		}
+
+		if(front==rear)
+		{
+			return 0;
+		}
+
+		return true;	
+
 	}
 
 	//=================================override toString to see content instead of address=========
+	/**
+	 * purpose : overriding toString method to display the content
+	 */
 	@Override
 	public String toString() {
 		for(int i=0;i<=rear;i++)
