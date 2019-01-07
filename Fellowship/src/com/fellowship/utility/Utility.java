@@ -50,7 +50,7 @@ public class Utility {
 		return str;
 	}
 
-	
+
 	/**
 	 * Method to get integer as input
 	 */
@@ -263,32 +263,18 @@ public class Utility {
 	 * @param year consist year
 	 */
 
-	public static void isLeapYear(int year) 
+	public static boolean isLeapYear(int year) 
 	{
-		// length variable hold the length of integer year
-		int length = Integer.toString(year).length();
-
-		//int length1 = String.valueOf(year1).length();
-		if(length<4&&length>4)
+		if(year%4==0&&year%100!=0||year%400==0) 
 		{
-			System.err.println("Enter 4 Digit year");
-			year=scanner.nextInt();
-			isLeapYear(year);
+			return true;
 		}
 		else
-		{	// Leap Year logic->The year completely divided by 4 but not by 100
-			//	the year divided by 400
-
-			if(year%4==0&&year%100!=0||year%400==0) 
-			{
-				System.out.println(year+" is a leap year.");
-			}
-			else
-			{
-				System.out.println(year+" is not a leap year.");
-			}
+		{
+			return false;
 		}
 	}
+
 	//*********************************************************************************************
 
 	//4. power of n series 
@@ -1486,7 +1472,7 @@ public class Utility {
 		return pay;
 	}
 	//*********************************************************************************************
-	
+
 	//Method to convert decimal to binary
 	/**
 	 * 
@@ -1497,7 +1483,7 @@ public class Utility {
 	{	
 		//creating empty string
 		String binaryStr="";
-		
+
 		//variable temp to store num so that can utilize while printing 
 		int temp=num;
 		//loop for getting remainder and concatenating it 
@@ -1511,7 +1497,7 @@ public class Utility {
 
 		return binaryStr;
 	}
-	
+
 	//Method for padding to represent 4byte binary
 	/**
 	 * 
@@ -1527,7 +1513,7 @@ public class Utility {
 		System.out.println("Binary representation in 4Byte is : "+binary);
 	}
 	//*********************************************************************************************
-	
+
 	//Method to swap nibbles and find the number
 	/**
 	 * 
@@ -1537,37 +1523,37 @@ public class Utility {
 	{
 		//empty string to swap nibbles 
 		String nibble="";
-		
+
 		//loop to represent binary in 8 bits
 		for(int i=binary.length();i<8;i++)
 		{
-			   binary = "0"+binary;
+			binary = "0"+binary;
 		}
 		System.out.println("8bit binary value is : ("+binary+")2");
-		
+
 		//taking string into toCharArray for get each bit to perform swap
 		char binaryChar[]=binary.toCharArray();
-		
+
 		//finding mid value to get first half and second half
 		int mid=binaryChar.length/2;
-		
+
 		//get second half nibbles
 		for(int i=mid;i<binaryChar.length;i++)
 		{
 			nibble=nibble+binaryChar[i];
 		}
-		
+
 		//concatenating(swapping)first half into second half
 		for(int i=0;i<mid;i++)
 		{
 			nibble=nibble+binaryChar[i];
 		}
-		
+
 		System.out.println("The nibble value is : "+nibble);
-		
+
 		//again taking nibble string as array to convert bin to decimal
 		char finalBinaryChar[]=nibble.toCharArray();
-		
+
 		int count=nibble.length();//to loop 8 times
 		int j=0; //index value of nibble
 		int sum=0; // total of 2^n
@@ -1579,17 +1565,17 @@ public class Utility {
 		{
 			if(finalBinaryChar[nibleLength]=='0')
 			{
-				 num =(int) finalBinaryChar[nibleLength]-48;
+				num =(int) finalBinaryChar[nibleLength]-48;
 			}
 			else
 			{
 				num=(int)finalBinaryChar[nibleLength]-48;
 			}
 			j++;//incrementing index value from last
-			
+
 			if(num==1)
 			{
-				
+
 				sum=sum+((int)(Math.pow(2, j-1)));
 			}
 			nibleLength--;
@@ -1597,4 +1583,86 @@ public class Utility {
 		}
 		System.out.println("The Decimal value of "+nibble+" is : "+sum);
 	}
+	//*********************************************************************************************
+
+	/**
+	 * this method is use for printing calendar of month 
+	 * @param startingDay 
+	 * @param month
+	 * @param year
+	 */
+	public static void printCalendar(int startingDay, int month, int year)
+	{
+		int endDay=0;//it stores number of days in month
+
+		//day array
+		String day[]= {"sun", "mon", "tues", "wed", "thu", "fri" , "sat"};
+
+		//find number of day in month
+		endDay =Utility.daysInMonth(month, year);
+
+		int date=1;//incrementing date
+		int count=0;//to increment and point to next position
+
+		String noOfDayInMonth[][]=new String[6][7];
+		//store day in array as string
+		for(int i = 0 ; i < 6 ; i++)
+		{
+
+			for(int j =0 ; j < 7 ; j++)
+			{
+				if((j == startingDay || count != 0) && date <= endDay )
+				{
+					noOfDayInMonth[i][j]=Integer.toString(date);
+					date++;
+					count++;
+				}
+				else
+					noOfDayInMonth[i][j]=" ";
+			}
+		}
+		for(int i = 0 ; i < 7 ; i++)
+		{
+			System.out.print("     "+day[i]);
+		}
+		System.out.println("");
+		for(int i = 0 ; i < 6 ; i++)
+		{
+
+			for(int j = 0 ; j < 7 ; j++)
+			{
+				String s = noOfDayInMonth[i][j];
+				if(s.length()<2)
+				{
+					System.out.print("       "+s);
+				}
+				else
+				{
+					System.out.print("      "+s);
+				}
+			}
+			System.out.println("");
+		}
+	}
+
+	/**
+	 * purpose : Method to get the number of days in given month
+	 * @param month number takes 
+	 * @param year number takes
+	 * @return number of days in given month
+	 */
+	private static int daysInMonth(int month, int year)
+	{
+		Integer[] days= {0,31,28,31,30,31,30,31,31,30,31,30,31};
+		
+		//Check if the year is leap year
+		if(isLeapYear(year))
+		{
+			days[2]=29;
+		}
+		return days[month];
+	}
+
+
 }
+

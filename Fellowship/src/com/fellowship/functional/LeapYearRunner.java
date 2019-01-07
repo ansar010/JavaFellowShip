@@ -17,6 +17,25 @@ public class LeapYearRunner
 	{
 		System.out.println("Enter the Year to Check whether it is Leap Year or Not..!");
 		int year = Utility.getInt();
-		Utility.isLeapYear(year); //calling method to check leap year
+		
+		// length variable hold the length of integer year
+		int length = Integer.toString(year).length();
+		
+		while(length<4&&length>4)
+		{
+			System.err.println("Enter 4 Digit year");
+			year=Utility.getInt();
+		}
+		 //calling method to check leap year
+		if(Utility.isLeapYear(year))
+		{
+		System.out.println(year+" is a leap year.");
+		}
+		else
+		{
+			System.out.println(year+" is not a leap year.");
+
+		}
+
 	}
 }
