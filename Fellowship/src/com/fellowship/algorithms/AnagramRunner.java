@@ -11,7 +11,7 @@ import com.fellowship.utility.Utility;
 
 public class AnagramRunner
 {	/*
-	 *The main function written to run the isAnagram
+	 *The main function written to run the isAnagram..
 	 */
 	public static void main(String[] args)
 	{
