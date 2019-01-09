@@ -12,8 +12,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -116,6 +114,11 @@ public class Utility {
 			return null;
 		}
 
+	}
+	
+	public static void close()
+	{
+		scanner.close();
 	}
 
 	/**
