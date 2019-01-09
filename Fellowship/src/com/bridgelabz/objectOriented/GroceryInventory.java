@@ -63,7 +63,6 @@ public class GroceryInventory
 					}
 					json=json+mapper.writeValueAsString(groceryBean)+"]";
 				} catch (org.json.simple.parser.ParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
