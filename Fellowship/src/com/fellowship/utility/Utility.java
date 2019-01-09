@@ -6,22 +6,117 @@
  * @since 13/12/2018
  **************************************************************************************************/
 package com.fellowship.utility;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import com.fellowship.algorithms.BinarryNibble;
+import com.bridgelabz.model.UserDetails;
 public class Utility {
+
+	private final String REGEX_NAME="<<name>>";
+	private final String REGEX_FULLNAME="<<full name>>";
+	private final String REGEX_MOBILE_NO="<<­xxxxxxxxxx>>";
+	private final String REGEX_DATE="01/01/2016";
 	/**
 	 * static Scanner and Random class objects to to call inbuilt methods 
 	 */
 	static Scanner scanner = new Scanner(System.in);
 	static Random rand = new Random();
+
+	BufferedReader bufferedReader;
+
+	/**
+	 * purpose : Method to replace the string according to regEx
+	 * @param userDetials takes from UserDetails class
+	 * @param message the target string
+	 * @return the replaced string
+	 */
+	public String replaceRegExString(UserDetails userDetials,String message)
+	{
+		System.out.println(message);
+		//create pattern object and target obj->matcher obj
+		Pattern p = Pattern.compile(REGEX_NAME);
+		Matcher m = p.matcher(message); 
+		
+		message = m.replaceAll(userDetials.getfName());
+
+		p = Pattern.compile(REGEX_FULLNAME);
+		m = p.matcher(message); 
+		message = m.replaceAll(userDetials.getfName()+" "+userDetials.getlName());
+
+		p = Pattern.compile(REGEX_MOBILE_NO);
+		m = p.matcher(message); 
+		message = m.replaceAll(userDetials.mobileNo());
+
+		p = Pattern.compile(REGEX_DATE);
+		m = p.matcher(message); 
+		message = m.replaceAll(userDetials.date());
+
+		return message;
+	}
+	
+	public String getFormattedDate(LocalDate date)
+	{
+		 
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
+		return formatter.format(date);  
+
+	}
+	//DateTimeFormatter name = new DateTimeFormatter.ofPattern("dd/MM/YYYY");
+	//format date object in this format 01/12/2016 
+//	public String getFormatedDate(LocalDate date)
+//	{
+//		SimpleDateFormat sdf=new SimpleDateFormat("dd/mm/yyyy");
+//		return sdf.format(date);
+//	}
+//	
+	
+	//=============================================================================================
+	//Alt+shift+j 
+	/**
+	 * purpose : To pass file name and get file text in string format
+	 * @param fileName 
+	 * @return text file 
+	 * @throws FileNotFoundException
+	 */
+	public String getFile(String fileName) 
+	{
+		try {
+			//getting file for read
+			bufferedReader = new BufferedReader(new FileReader(fileName));
+
+			//creating string builder object to store file content
+			StringBuilder stringBuilder = new StringBuilder();
+
+			//read line from file and store it line
+			String line = bufferedReader.readLine();
+
+			while(line!=null)
+			{
+				stringBuilder.append(line);
+				stringBuilder.append(System.lineSeparator());
+				line = bufferedReader.readLine();
+			}
+			return bufferedReader.toString();
+		} catch (Exception e) {
+			return null;
+		}
+
+	}
 
 	/**
 	 * Method to get char from user
@@ -1654,7 +1749,7 @@ public class Utility {
 	private static int daysInMonth(int month, int year)
 	{
 		Integer[] days= {0,31,28,31,30,31,30,31,31,30,31,30,31};
-		
+
 		//Check if the year is leap year
 		if(isLeapYear(year))
 		{
