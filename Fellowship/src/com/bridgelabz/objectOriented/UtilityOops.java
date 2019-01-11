@@ -4,14 +4,40 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.time.format.DateTimeFormatter;
+
 public class UtilityOops 
 {
-	public static String readFile(String fileName)
+	BufferedReader bufferedReader;
+
+	public String inputString()
 	{
-		File file = new File(fileName);
+		try {
+			return bufferedReader.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "";
+	}
+
+	public String formatDate(String date) 
+	{
+		DateTimeFormatter formatter = new DateTimeFormatter.ofPattern("dd/mm/yyyy");
+
+		return s.format(printDate(date));
+	}
+	/**
+	 * purpose : method to read file 
+	 * @param filePath takes file path
+	 * @return
+	 */
+	public  String readFile(String filePath)
+	{
+		File file = new File(filePath);
 		FileReader fileReader;
-		BufferedReader bufferedReader = null ;
 
 		try {
 			fileReader = new FileReader(file);
@@ -40,6 +66,30 @@ public class UtilityOops
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+
+	/**
+	 * purpose : method to write the data in file 
+	 * @param data takes from user
+	 * @param fileName takes file path
+	 */
+	public static void writeFile(String data,String fileName)
+	{
+		FileWriter fileWriter;
+		PrintWriter out = null;
+		try {
+			fileWriter = new FileWriter(fileName,true);
+			//BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+			out = new PrintWriter(fileWriter);
+			out.print(data);
+			out.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		finally
+		{
+			out.close();
 		}
 	}
 }

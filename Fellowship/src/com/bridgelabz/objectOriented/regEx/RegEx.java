@@ -30,6 +30,6 @@ public class RegEx {
 		System.out.println(message);
 		//Setting current date
 		user.setdate(u.getFormattedDate(LocalDate.now()));
-		System.out.println(u.replaceRegExString(user,u.getFile("message.txt")));	
+		System.out.println(u.replaceRegExString(user,u.getFile("/home/admin1/Desktop/OOPs/Message.txt")));	
 	}
 }

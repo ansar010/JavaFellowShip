@@ -1,45 +1,36 @@
 package com.bridgelabz.model;
 
-public class UserDetails {
+public class UserDetails 
+{
 	private String firstName;
 	private String lastName;
 	private String mobileNo;
 	private String date;
-
-	//constructor
-	public UserDetails(){
-	}
-
-	//getter and setter methods
-	public void setfName(String firstName){
-		this.firstName=firstName;
-	}
-
-	public void setlName(String lastName){
-		this.lastName=lastName;
-	}
-
-	public void setmobileNo(String mobileNo){
-		this.mobileNo=mobileNo;
-	}
-
-	public void setdate(String date){
-		this.date=date;
-	}
-
-	public String getfName(){
+	
+	public String getFirstName() {
 		return firstName;
 	}
-
-	public String getlName(){
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
 		return lastName;
 	}
-
-	public String mobileNo(){
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getMobileNo() {
 		return mobileNo;
 	}
-
-	public String date(){
+	public void setMobileNo(String mobileNo) {
+		this.mobileNo = mobileNo;
+	}
+	public String getDate() {
 		return date;
 	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	
 }

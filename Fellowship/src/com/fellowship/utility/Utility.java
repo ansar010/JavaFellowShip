@@ -43,13 +43,13 @@ public class Utility {
 	 * @param message the target string
 	 * @return the replaced string
 	 */
-	public String replaceRegExString(UserDetails userDetials,String message)
+	/*public String replaceRegExString(UserDetails userDetials,String message)
 	{
 		System.out.println(message);
 		//create pattern object and target obj->matcher obj
 		Pattern p = Pattern.compile(REGEX_NAME);
 		Matcher m = p.matcher(message); 
-		
+
 		message = m.replaceAll(userDetials.getfName());
 
 		p = Pattern.compile(REGEX_FULLNAME);
@@ -65,24 +65,24 @@ public class Utility {
 		message = m.replaceAll(userDetials.date());
 
 		return message;
-	}
-	
+	}*/
+
 	public String getFormattedDate(LocalDate date)
 	{
-		 
+
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/YYYY");
 		return formatter.format(date);  
 
 	}
 	//DateTimeFormatter name = new DateTimeFormatter.ofPattern("dd/MM/YYYY");
 	//format date object in this format 01/12/2016 
-//	public String getFormatedDate(LocalDate date)
-//	{
-//		SimpleDateFormat sdf=new SimpleDateFormat("dd/mm/yyyy");
-//		return sdf.format(date);
-//	}
-//	
-	
+	//	public String getFormatedDate(LocalDate date)
+	//	{
+	//		SimpleDateFormat sdf=new SimpleDateFormat("dd/mm/yyyy");
+	//		return sdf.format(date);
+	//	}
+	//	
+
 	//=============================================================================================
 	//Alt+shift+j 
 	/**
@@ -115,7 +115,7 @@ public class Utility {
 		}
 
 	}
-	
+
 	public static void close()
 	{
 		scanner.close();

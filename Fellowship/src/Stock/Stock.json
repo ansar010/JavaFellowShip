@@ -1,0 +1,1 @@
+[{"Stock1":{"SharePrice":200,"NumberOfShare":500,"StockName":"pepsi","StockSymbol":"pep","TotalAmount":100000}},{"Stock2":{"SharePrice":100,"NumberOfShare":400,"StockName":"maa","StockSymbol":"mango","TotalAmount":40000}},{"Stock3":{"SharePrice":50,"NumberOfShare":600,"StockName":"coke","StockSymbol":"co","TotalAmount":30000}}]
