@@ -18,7 +18,6 @@ import org.json.JSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 
-import com.bridgelabz.model.GroceryBean;
 import com.bridgelabz.model.UserDetails;
 
 
@@ -225,7 +224,7 @@ public class UtilityOops
 
 			System.out.println("\nDo you want to add more item\n Enter yes or no");
 			response=UtilityOops.getWord();
-			
+
 			count++;
 		}while(response.equals("yes"));
 
