@@ -6,7 +6,8 @@ import com.bridgelabz.model.UserDetails;
 
 public class RegExMain
 {
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 
 
 		UtilityOops u=new UtilityOops();
@@ -14,18 +15,18 @@ public class RegExMain
 
 
 		System.out.print("Enter the first name : ");
-		user.setFirstName(u.getWord());
-		
+		user.setFirstName(UtilityOops.getWord());
+
 
 		System.out.print("Enter the last name : ");
-		user.setLastName(u.getWord());
+		user.setLastName(UtilityOops.getWord());
 
 
 		System.out.print("Enter the mobile num : ");
-		user.setMobileNo(u.getWord());
+		user.setMobileNo(UtilityOops.getWord());
 
 		user.setDate(LocalDate.now());
-		
+
 		System.out.println();
 		System.out.println(u.replaceUserdata(user,u.readFile("/home/admin1/Desktop/OOPs/Message.txt")));
 	}

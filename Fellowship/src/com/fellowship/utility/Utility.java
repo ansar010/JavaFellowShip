@@ -19,10 +19,6 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import com.bridgelabz.model.UserDetails;
 public class Utility {
 
 	private final String REGEX_NAME="<<name>>";
