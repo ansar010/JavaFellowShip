@@ -14,6 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.codehaus.jackson.map.ObjectMapper;
+import org.json.JSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 
@@ -35,6 +36,10 @@ public class UtilityOops
 	public static String getWord()
 	{
 		return scanner.next();
+	}
+
+	public static int getInt() {
+		return scanner.nextInt();
 	}
 
 	public static Long getLong()
@@ -110,6 +115,11 @@ public class UtilityOops
 		}
 	}
 
+	/**
+	 * purpose : method to write convert javaObject into jsonarry
+	 * @param jObject takes java object
+	 * @param jFilepath takes the file path where jsonarry write
+	 */
 	public void jObjToJsonArr(Object jObject,String jFilepath)
 	{
 		//creating object to utilize API method's
@@ -158,51 +168,7 @@ public class UtilityOops
 		}
 	}
 
-	//	public static void filewrite(GroceryBean groceryBean) 
-	//	{
-	//		ObjectMapper mapper=new ObjectMapper();	
-	//		String json="[";
-	//		JSONParser parser=new JSONParser();		
-	//		try {
-	//			File file=new File("/home/admin1/Desktop/JSOn/data.json");
-	//
-	//			if(file.length()==0)
-	//			{
-	//
-	//				json=json+mapper.writeValueAsString(groceryBean)+"]";
-	//			}
-	//			else
-	//			{
-	//				Object object;
-	//				try {
-	//					object = parser.parse(new FileReader("/home/admin1/Desktop/JSOn/data.json"));
-	//					JSONArray array=new JSONArray();
-	//					array=(JSONArray) object;
-	//					for (int j = 0; j < array.size(); j++) {
-	//						json=json+array.get(j)+",";
-	//					}
-	//					json=json+mapper.writeValueAsString(groceryBean)+"]";
-	//				} catch (org.json.simple.parser.ParseException e) {
-	//					e.printStackTrace();
-	//				}
-	//				
-	//			}
-	//
-	//		}
-	//		catch (IOException e1) {
-	//			e1.printStackTrace();
-	//		}
-	//		try  {
-	//
-	//			FileWriter file = new FileWriter("/home/admin1/Desktop/JSOn/data.json");
-	//			file.write(json);
-	//			file.flush();
-	//		}
-	//		catch (IOException e) {
-	//			e.printStackTrace();
-	//		}
-	//
-	//	}
+
 	/**
 	 * purpose : method to write the data in file 
 	 * @param data takes from user
@@ -227,4 +193,44 @@ public class UtilityOops
 			out.close();
 		}
 	}
+
+	@SuppressWarnings("unchecked")
+	public static String createStock()
+	{
+		int count=1;
+		JSONObject jsonObject = new JSONObject();
+		JSONArray jsonArray = new JSONArray();
+
+		String response = null;
+		do
+		{
+			System.out.print("Enter the Name of stock : ");
+			String stockName = UtilityOops.getWord();
+			jsonObject.put("Stock name", stockName);
+
+			System.out.print("Enter the number of share : ");
+			int numOfShare = UtilityOops.getInt();
+			jsonObject.put("Number of share", numOfShare);
+
+			System.out.print("Enter the share price : ");
+			int sharePrice = UtilityOops.getInt();
+			jsonObject.put("Stock price", sharePrice);
+
+			jsonObject.put("Total amount of share",sharePrice*numOfShare);
+
+			JSONObject element = new JSONObject();
+			element.put("Stock"+count, jsonObject);
+
+			jsonArray.add(element);
+
+			System.out.println("\nDo you want to add more item\n Enter yes or no");
+			response=UtilityOops.getWord();
+			
+			count++;
+		}while(response.equals("yes"));
+
+		return jsonArray.toJSONString();
+	}
+
+
 }

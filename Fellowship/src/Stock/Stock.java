@@ -48,7 +48,7 @@ public class Stock {
 		obj.add(jsonObject4);
 		obj.add(jsonObject5);
 
-		try (FileWriter file = new FileWriter("/home/bridgelabz/stock.json")) {
+		try (FileWriter file = new FileWriter("/home/admin1/Desktop/StockReport.json")) {
 
 			file.write(obj.toJSONString());
 			file.flush();

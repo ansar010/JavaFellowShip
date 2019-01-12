@@ -1,4 +1,4 @@
-package Stock;
+	package Stock;
 
 public class Stock1 {
 	private String stockName;
