@@ -431,4 +431,11 @@ public class UtilityOops
 				return true;
 		}
 	}
+
+	//method to get stock Details
+	
+	public static void getStockAccount() 
+	{
+		
+	}
 }

@@ -23,7 +23,8 @@ public class StockAccount
 	Scanner scanner=new Scanner(System.in);
 	String symbol;
 	static JSONParser parser=new JSONParser();
-	static JSONObject name[];static long cId[];
+	static JSONObject name[];
+	static long cId[];
 	static String companySymbol[];
 	String customerName;
 	TransactionInJson transactionInJson=new TransactionInJson();

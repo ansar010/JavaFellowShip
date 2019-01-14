@@ -38,7 +38,7 @@ public class StockManagement
 				break;
 			case 2:
 				System.out.println("STOCK ACCOUNT");
-				StockAccount account=new StockAccount();
+				UtilityOops.getStockAccount();
 				break;
 			case 3:
 				System.out.println();
