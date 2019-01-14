@@ -31,13 +31,17 @@ public class StockAccount
 	@SuppressWarnings("unchecked")
 	public StockAccount() 
 	{
+		//to buy 
+		//sell
 
 		Object obj,obj1,obj2;
 		JSONArray a=new JSONArray();
 		JSONObject object2=new JSONObject();
 		long value=0;
 		try {
+			//to buy from store
 			obj = parser.parse(new FileReader("/home/admin1/Desktop/Stock/stockinjson.json"));
+			//get customer detail
 			obj1 = parser.parse(new FileReader("/home/admin1/Desktop/Stock/customerdetail.json"));
 
 			JSONArray array1=new JSONArray();
@@ -45,6 +49,7 @@ public class StockAccount
 			array1=(JSONArray) obj1;
 
 			JSONArray array=new JSONArray();
+			//it will take customer stock details
 			obj2 = parser.parse(new FileReader("/home/admin1/Desktop/Stock/customerproductdetail.json"));				
 			array2=(JSONArray) obj2;
 			array=(JSONArray) obj;

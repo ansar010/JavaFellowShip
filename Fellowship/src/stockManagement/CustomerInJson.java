@@ -23,7 +23,7 @@ public class CustomerInJson
 	{
 		// TODO Auto-generated constructor stub
 		CustomerDetails c=new CustomerDetails();
-		CustomerProductDetail c1=new CustomerProductDetail();
+		CustomerStockDetail c1=new CustomerStockDetail();
 		System.out.println("enter ur id");
 		int id=scanner.nextInt();
 		boolean b=validateCustomer(id);
@@ -39,7 +39,7 @@ public class CustomerInJson
 		c.setName(scanner.next());
 		System.out.println("enter ur phone number");
 		c.setNum(scanner.next());
-
+		
 		String name[];
 		name=getStockName();
 		c1.setProductName(name);
@@ -150,7 +150,7 @@ public class CustomerInJson
 		String pName[]=new String[3];
 		JSONParser parser =new JSONParser();
 		//ObjectMapper mapper=new ObjectMapper();
-		JSONObject name[];
+		JSONObject name[];//to store json object
 		Object o[];
 		try {
 
@@ -212,7 +212,7 @@ public class CustomerInJson
 					System.out.println();
 					CustomerDetails c1=mapper.readValue(array.get(i).toString(), CustomerDetails.class);
 					System.out.print("Id="+c1.getId()+" Name="+c1.getName()+" Phone Number="+c1.getNum());
-					CustomerProductDetail c2=mapper.readValue(array1.get(i).toString(), CustomerProductDetail.class);
+					CustomerStockDetail c2=mapper.readValue(array1.get(i).toString(), CustomerStockDetail.class);
 
 					String name[]=c2.getProductName();
 					int share[]=c2.getProductShare();

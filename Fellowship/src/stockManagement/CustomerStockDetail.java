@@ -1,6 +1,6 @@
 package stockManagement;
 
-public class CustomerProductDetail 
+public class CustomerStockDetail 
 {
 	private int productShare[];
 	int share[];
