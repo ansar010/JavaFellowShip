@@ -1,4 +1,4 @@
-package stockManagement;
+package com.bridgelabz.stockReport;
 
 import java.io.File;
 import java.io.FileReader;
@@ -18,16 +18,19 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.bridgelabz.stock.model.TransactionDetails;
+
 public class StockAccount 
 {
 	Scanner scanner=new Scanner(System.in);
+	
 	String symbol;
 	static JSONParser parser=new JSONParser();
 	static JSONObject name[];
 	static long cId[];
 	static String companySymbol[];
 	String customerName;
-	TransactionInJson transactionInJson=new TransactionInJson();
+	TransactionDetails transactionInJson=new TransactionDetails();
 	ObjectMapper mapper=new ObjectMapper();
 	@SuppressWarnings("unchecked")
 	public StockAccount() 
@@ -44,9 +47,9 @@ public class StockAccount
 		long value=0;
 		try {
 			//to buy from store
-			obj = parser.parse(new FileReader("/home/admin1/Desktop/Stock/stockinjson.json"));
+			obj = parser.parse(new FileReader("/home/admin1/Desktop/OOPs/StockManagement/presentStock.json"));
 			//get customer detail
-			obj1 = parser.parse(new FileReader("/home/admin1/Desktop/Stock/customerdetail.json"));
+			obj1 = parser.parse(new FileReader("/home/admin1/Desktop/OOPs/StockManagement/CustomerDetails.json"));
 
 			JSONArray array1=new JSONArray();
 			JSONArray array2=new JSONArray();
@@ -54,7 +57,7 @@ public class StockAccount
 
 			JSONArray array=new JSONArray();
 			//it will take customer stock details
-			obj2 = parser.parse(new FileReader("/home/admin1/Desktop/Stock/customerproductdetail.json"));				
+			obj2 = parser.parse(new FileReader("//home/admin1/Desktop/OOPs/StockManagement/CustomerStockDetails.json"));				
 			array2=(JSONArray) obj2;
 			array=(JSONArray) obj;
 
@@ -148,14 +151,16 @@ public class StockAccount
 
 					object2=(JSONObject) array2.get(j);
 					a=(JSONArray)object2.get("productShare");
-					//System.out.println(a.size());
-					//	System.out.println(temp+" "+temp1);
+					System.out.println(a);
+					System.out.println(a.size());
+						System.out.println(temp+" "+temp1);
 
 					for (int j2 = 0; j2 <name.length; j2++)
 					{
 
 						if(j==temp && j2==temp1)
 						{
+							System.out.println(value+" "+temp1);
 							long value1=(long)a.get(temp1)+value;
 							/*	System.out.println(value1);
 	    							System.out.println(a.get(j2));*/
@@ -280,18 +285,18 @@ public class StockAccount
 			e.printStackTrace();
 		}
 	}	
-	private void fileWriteForTransaction(TransactionInJson transactionInJson) 
+	private void fileWriteForTransaction(TransactionDetails transactionDetails) 
 	{
 		Object object;
 		String json="[";
-		File file=new File("/home/admin1/Desktop/Stock/transactioninjson.json");
+		File file=new File("/home/admin1/Desktop/OOPs/StockManagement/TransactionDetails.json");
 
 		try {
 			if(file.length()==0)
-				json=json+mapper.writeValueAsString(transactionInJson)+"]";
+				json=json+mapper.writeValueAsString(transactionDetails)+"]";
 			else
 			{
-				object = parser.parse(new FileReader("/home/admin1/Desktop/Stock/transactioninjson.json"));
+				object = parser.parse(new FileReader("/home/admin1/Desktop/OOPs/StockManagement/TransactionDetails.json"));
 				JSONArray array=new JSONArray();
 				array=(JSONArray) object;
 				for (int i = 0; i < array.size(); i++)
@@ -300,10 +305,10 @@ public class StockAccount
 					json=json+array.get(i)+",";
 					//	System.out.println("inner Json"+json);
 				}
-				json=json+mapper.writeValueAsString(transactionInJson)+"]";
+				json=json+mapper.writeValueAsString(transactionDetails)+"]";
 
 			}
-			FileWriter fileWrite = new FileWriter("/home/admin1/Desktop/Stock/transactioninjson.json");
+			FileWriter fileWrite = new FileWriter("/home/admin1/Desktop/OOPs/StockManagement/TransactionDetails.json");
 			//System.out.println("json="+json);
 			fileWrite.write(json);
 			fileWrite.flush();
@@ -324,7 +329,7 @@ public class StockAccount
 		// long finalShare=0;
 		transactionInJson.setNumberOfShare(amount);  
 		try {
-			obj = parser.parse(new FileReader("/home/admin1/Desktop/Stock/stockinjson.json"));
+			obj = parser.parse(new FileReader("/home/admin1/Desktop/OOPs/StockManagement/presentStock.json"));
 
 			array=(JSONArray) obj;
 
@@ -400,7 +405,7 @@ public class StockAccount
 		long finalShare=0;
 
 		try {
-			obj = parser.parse(new FileReader("/home/admin1/Desktop/Stock/stockinjson.json"));
+			obj = parser.parse(new FileReader("/home/admin1/Desktop/OOPs/StockManagement/presentStock.json"));
 
 			array=(JSONArray) obj;
 
@@ -475,7 +480,7 @@ public class StockAccount
 		{
 
 			try {
-				FileWriter file = new FileWriter("/home/admin1/Desktop/Stock/customerproductdetail.json");
+				FileWriter file = new FileWriter("/home/admin1/Desktop/OOPs/StockManagement/CustomerStockDetails.json");
 				file.write(object2.toJSONString()); 
 				file.flush();
 			} catch (IOException e) {
@@ -489,13 +494,13 @@ public class StockAccount
 			ObjectMapper mapper=new ObjectMapper();
 			Object obj1;
 			try {
-				FileWriter file1 = new FileWriter("/home/admin1/Desktop/Stock/customerproductdetail1.json");
+				FileWriter file1 = new FileWriter("/home/admin1/Desktop/OOPs/StockManagement/CustomerStockDetails.json");
 				file1.write(object2.toJSONString());
 				file1.flush();
-				Object obj2 = parser.parse(new FileReader("/home/admin1/Desktop/Stock/customerproductdetail1.json"));
+				Object obj2 = parser.parse(new FileReader("/home/admin1/Desktop/OOPs/StockManagement/CustomerStockDetails.json"));
 				JSONArray array3=new JSONArray();
 				array3=(JSONArray) obj2;
-				obj1 = parser.parse(new FileReader("/home/admin1/Desktop/Stock/customerproductdetail.json"));
+				obj1 = parser.parse(new FileReader("/home/admin1/Desktop/OOPs/StockManagement/CustomerStockDetails.json"));
 				JSONArray array2=new JSONArray();
 				array2=(JSONArray) obj1;
 				for (int i = 0; i < array2.size(); i++)
@@ -509,7 +514,7 @@ public class StockAccount
 				//System.out.println(count+":json1="+json1);
 				json1=json1+mapper.writeValueAsString(array3.get(0))+"]";
 				//System.out.println("hi"+json1);
-				FileWriter file = new FileWriter("/home/admin1/Desktop/Stock/customerproductdetail.json");
+				FileWriter file = new FileWriter("/home/admin1/Desktop/OOPs/StockManagement/CustomerStockDetails.json");
 				file.write(json1);
 				file.flush();
 			} catch (IOException | ParseException e) {
@@ -526,7 +531,7 @@ public class StockAccount
 
 	private static void FileWriterForStock(JSONArray obj2)
 	{
-		try (FileWriter file = new FileWriter("/home/admin1/Desktop/Stock/stockinjson.json")) 
+		try (FileWriter file = new FileWriter("/home/admin1/Desktop/OOPs/StockManagement/presentStock.json")) 
 		{
 
 			file.write(obj2.toJSONString());  

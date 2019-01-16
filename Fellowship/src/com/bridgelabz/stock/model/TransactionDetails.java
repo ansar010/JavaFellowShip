@@ -1,4 +1,4 @@
-package com.bridgelabz.model;
+package com.bridgelabz.stock.model;
 
 import java.time.LocalTime;
 

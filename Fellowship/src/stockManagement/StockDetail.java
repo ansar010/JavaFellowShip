@@ -46,7 +46,8 @@ public class StockDetail
 	public void setStockSymbol(String stockSymbol) {
 		this.stockSymbol = stockSymbol;
 	}
-	static void printStockReport()
+	
+	public static void printStockReport()
 	{
 		JSONParser parser =new JSONParser();
 		//ObjectMapper mapper=new ObjectMapper();
