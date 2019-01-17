@@ -12,51 +12,52 @@ public class StockInJson
 	public static void main(String[] args) {
 
 
-		JSONObject jsonObject=new JSONObject();
-		jsonObject.put("StockName", "pepsi");
-		jsonObject.put("NumberOfShare", new Integer(500));
-		jsonObject.put("SharePrice", new Integer(200));
-		jsonObject.put("StockSymbol","pep");
+		JSONObject jObj1=new JSONObject();
+		jObj1.put("StockName", "Birla");
+		jObj1.put("NumberOfShare", new Integer(500));
+		jObj1.put("SharePrice", new Integer(200));
+		jObj1.put("StockSymbol","B");
+		int share=(int)jObj1.get("NumberOfShare");
+		int price=(int)jObj1.get("SharePrice");
+		jObj1.put("TotalAmount",(share*price) );
 
-		int share=(int)jsonObject.get("NumberOfShare");
-		int price=(int)jsonObject.get("SharePrice");
-		jsonObject.put("TotalAmount",(share*price) );
-		JSONObject jsonObject3=new JSONObject();
-		jsonObject3.put("Stock1", jsonObject);
-
-
-		JSONObject jsonObject1=new JSONObject();
-		jsonObject1.put("StockName", "maa");
-		jsonObject1.put("NumberOfShare", new Integer(400));
-		jsonObject1.put("SharePrice", new Integer(100));
-
-		jsonObject1.put("StockSymbol","mango");
-		share=(int)jsonObject1.get("NumberOfShare");
-		price=(int)jsonObject1.get("SharePrice");
-		jsonObject1.put("TotalAmount",(share*price) );
-		JSONObject jsonObject4=new JSONObject();
-		jsonObject4.put("Stock2", jsonObject1);
+		JSONObject element1=new JSONObject();
+		element1.put("Stock1", jObj1);
 
 
+		JSONObject jObj2=new JSONObject();
+		jObj2.put("StockName", "ShareKhan");
+		jObj2.put("NumberOfShare", new Integer(400));
+		jObj2.put("SharePrice", new Integer(100));
+		jObj2.put("StockSymbol","S");
+		share=(int)jObj2.get("NumberOfShare");
+		price=(int)jObj2.get("SharePrice");
+		jObj2.put("TotalAmount",(share*price) );
 
-		JSONObject jsonObject2=new JSONObject();
-		jsonObject2.put("StockName", "coke");
-		jsonObject2.put("NumberOfShare", new Integer(600));
-		jsonObject2.put("SharePrice", new Integer(50));
-		jsonObject2.put("StockSymbol","co");
-		share=(int)jsonObject2.get("NumberOfShare");
-		price=(int)jsonObject2.get("SharePrice");
-		jsonObject2.put("TotalAmount",(share*price) );
-		JSONObject jsonObject5=new JSONObject();
-		jsonObject5.put("Stock3", jsonObject2);
+		JSONObject element2=new JSONObject();
+		element2.put("Stock2", jObj2);
+
+
+
+		JSONObject jObj3=new JSONObject();
+		jObj3.put("StockName", "Adams");
+		jObj3.put("NumberOfShare", new Integer(600));
+		jObj3.put("SharePrice", new Integer(50));
+		jObj3.put("StockSymbol","ADA");
+		share=(int)jObj3.get("NumberOfShare");
+		price=(int)jObj3.get("SharePrice");
+		jObj3.put("TotalAmount",(share*price) );
+
+		JSONObject element3=new JSONObject();
+		element3.put("Stock3", jObj3);
 
 
 
 		JSONArray obj=new JSONArray();
 
-		obj.add(jsonObject3);
-		obj.add(jsonObject4);
-		obj.add(jsonObject5);
+		obj.add(element1);
+		obj.add(element2);
+		obj.add(element3);
 
 		try (FileWriter file = new FileWriter("/home/admin1/Desktop/Stock/stockinjson.json")) {
 

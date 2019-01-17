@@ -4,18 +4,20 @@ import java.time.LocalTime;
 
 public class TransactionDetails 
 {
+
 	private long id;
 	private String customerName;
 	private String stockName;
 	private long NumberOfShare;
 	private String date;
 	private LocalTime time;
+	private String mode;
 	
 	public long getId() {
 		return id;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setId(Long customerId) {
+		this.id = customerId;
 	}
 	public String getCustomerName() {
 		return customerName;
@@ -53,5 +55,4 @@ public class TransactionDetails
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
-	private String mode;
 }

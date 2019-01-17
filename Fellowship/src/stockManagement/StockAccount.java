@@ -67,6 +67,8 @@ public class StockAccount
 			cId=new long[array1.size()];
 			name=new JSONObject[array.size()];
 			int i=1;
+			
+			// loop to store the name of stock
 			for (int j = 0; j < array.size() ; j++)
 			{
 
@@ -82,12 +84,15 @@ public class StockAccount
 				i++;
 
 			}
+			
+			//loop to store customer id
 			//System.out.println(array1.size());
 			for (int j = 0; j < array1.size(); j++) 
 			{
 				jsonObject1=(JSONObject) array1.get(j);
 				cId[j]=(long) jsonObject1.get("id");
 			}
+		
 			System.out.println("u want to \n1.buy \n2.sell");
 			int choice=scanner.nextInt();
 
@@ -107,13 +112,18 @@ public class StockAccount
 				Long customerId=scanner.nextLong();
 				System.out.println("enter the stock name");
 				String stockName=scanner.next();
-				System.out.println("enter the amount");
+				System.out.println("enter the number of share");
 				int amount=scanner.nextInt();
 				System.out.println("enter the stock symbol");
 				String symbol=scanner.next();
+				
+				//storing customer transaction details
 				transactionInJson.setId(customerId);
 				transactionInJson.setStockName(stockName);
+				
 				int temp=0,temp1=0;
+				
+				//loop for get customer name to process transaction
 				for (int j = 0; j < cId.length; j++) 
 				{
 					jsonObject1=(JSONObject) array1.get(j);
@@ -124,6 +134,8 @@ public class StockAccount
 					}
 				}
 				transactionInJson.setCustomerName(customerName);
+				
+				//to get stock name
 				for (int j = 0; j < name.length; j++) 
 				{
 
@@ -131,6 +143,8 @@ public class StockAccount
 						temp1=j;
 				}
 				transactionInJson.setStockName((String)name[temp1].get("StockName"));
+				
+				//loop for number of share
 				while(amount>=(long)name[temp1].get("NumberOfShare"))
 				{
 					System.out.println("enter the valid amount");
@@ -141,7 +155,8 @@ public class StockAccount
 				value=(long)buy(amount,symbol);
 				transactionInJson.setMode("Buy");
 				array2=(JSONArray) obj2;
-
+				
+				//
 				int count=0;
 				for (int j = 0; j < cId.length; j++)
 				{
@@ -411,6 +426,8 @@ public class StockAccount
 			companySymbol=new String[array.size()];
 			name=new JSONObject[array.size()];
 			int i=1;
+			
+			//loop to traverse on company symbol
 			for (int j = 0; j < array.size(); j++)
 			{
 
@@ -433,8 +450,9 @@ public class StockAccount
 			e.printStackTrace();
 		}
 		int temp=0;
+		
 		for (int j = 0; j < companySymbol.length; j++) 
-		{
+		{	//condition to check company symbol
 			if(companySymbol[j].equals(symbol))
 			{
 				temp=j;
@@ -450,7 +468,8 @@ public class StockAccount
 				transactionInJson.setDate(dateFormat.format(date));
 			}
 		}
-
+		
+		//to store modified share values
 		JSONArray obj2=new JSONArray();
 		JSONObject o=new JSONObject();
 		Map<Object, Object> m=new HashMap<>();

@@ -12,10 +12,9 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.bridgelabz.objectOriented.UtilityOops;
-import com.bridgelabz.stock.model.CustomerDetailsStockMan;
+import com.bridgelabz.stock.model.CustomerDetails;
 import com.bridgelabz.stock.model.CustomerStockDetails;
 
-import stockManagement.CustomerDetails;
 import stockManagement.CustomerStockDetail;
 
 public class Customer
@@ -30,7 +29,7 @@ public class Customer
 	public Customer()
 	{
 		//creating customer object and initializing it's properties
-		CustomerDetailsStockMan customerDetails = new CustomerDetailsStockMan();
+		CustomerDetails customerDetails = new CustomerDetails();
 
 		//creating customerDetails object and initializing it's properties
 		CustomerStockDetails customerStockDetail = new CustomerStockDetails();
@@ -51,7 +50,7 @@ public class Customer
 		customerDetails.setName(UtilityOops.getWord());
 
 		System.out.println("Enter ur phone number");
-		customerDetails.setMobile_num(UtilityOops.getWord());
+		customerDetails.setnum(UtilityOops.getWord());
 
 		//code to initialize user stock values
 		String sName[];
@@ -239,7 +238,7 @@ public class Customer
 				{
 					System.out.println();
 					CustomerDetails c1=mapper.readValue(array.get(i).toString(), CustomerDetails.class);
-					System.out.print("Id="+c1.getId()+" Name="+c1.getName()+" Phone Number="+c1.getNum());
+					System.out.print("Id="+c1.getId()+" Name="+c1.getName()+" Phone Number="+c1.getnum());
 					CustomerStockDetail c2=mapper.readValue(array1.get(i).toString(), CustomerStockDetail.class);
 
 					String name[]=c2.getProductName();

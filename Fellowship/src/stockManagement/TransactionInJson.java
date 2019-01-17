@@ -10,7 +10,8 @@ public class TransactionInJson
 	private long NumberOfShare;
 	private String date;
 	private LocalTime time;
-	private String mode;
+	private String mode;//buy or sell
+	
 	public long getId() {
 		return id;
 	}

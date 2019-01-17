@@ -21,12 +21,13 @@ public class CustomerInJson
 
 	public CustomerInJson()
 	{
-		// TODO Auto-generated constructor stub
 		CustomerDetails c=new CustomerDetails();
 		CustomerStockDetail c1=new CustomerStockDetail();
 		System.out.println("enter ur id");
 		int id=scanner.nextInt();
 		boolean b=validateCustomer(id);
+		
+		//loop to get correct id
 		while(!b)
 		{
 
@@ -34,27 +35,35 @@ public class CustomerInJson
 			id=scanner.nextInt();
 			b=validateCustomer(id);
 		}
+		
 		c.setId(id);
+		
 		System.out.println("enter ur name");
 		c.setName(scanner.next());
+		
 		System.out.println("enter ur phone number");
 		c.setNum(scanner.next());
+		
 		
 		String name[];
 		name=getStockName();
 		c1.setProductName(name);
 		int product[]=new int[name.length];
+		
 		for (int i = 0; i < product.length; i++)
 		{
 			product[i]=0;
 
 		}
+		
 		c1.setProductShare(product);
 		ObjectMapper mapper=new ObjectMapper();
 		String json="[",json1="[";
 
+		//code to write json format file
 		try {
 			File file=new File("/home/admin1/Desktop/Stock/customerdetail.json");
+			
 			if(file.length()==0)
 			{
 				//System.out.println(c+" "+c1);
@@ -63,8 +72,6 @@ public class CustomerInJson
 			}
 			else
 			{
-				//JSONArray a= (JSONArray) parser.parse(new FileReader("/home/bridgelabz/stock/customerdetail.json"));
-				//System.out.println(a.size());
 				Object obj = parser.parse(new FileReader("/home/admin1/Desktop/Stock/customerdetail.json"));
 				Object obj1 = parser.parse(new FileReader("/home/admin1/Desktop/Stock/customerproductdetail.json"));
 				JSONArray array=new JSONArray();
@@ -117,15 +124,23 @@ public class CustomerInJson
 			Object ob;
 			int flag=0;
 			try {
+				//it will take json object as single obj
 				ob = parser.parse(new FileReader("/home/admin1/Desktop/Stock/customerdetail.json"));
+			
+				//we are creating array to access obj by its index
 				JSONArray arra=new JSONArray();
-				JSONObject jsonObject=new JSONObject();
 				arra=(JSONArray) ob;
-
+				
+				//creating json obj to store one by one json obj 
+				JSONObject jsonObject=new JSONObject();
+				
+			
+				//loop to validate the id
 				for (int i = 0; i < arra.size(); i++)
 				{
+					//storing json obj 
 					jsonObject=(JSONObject) arra.get(i);
-					//	System.out.println(jsonObject.get("id"));
+					
 					if((long)jsonObject.get("id")==id)
 					{
 						System.out.println("the Id is already there try again another number");
@@ -147,29 +162,39 @@ public class CustomerInJson
 	}
 	private String[] getStockName() 
 	{
+		
 		String pName[]=new String[3];
 		JSONParser parser =new JSONParser();
-		//ObjectMapper mapper=new ObjectMapper();
 		JSONObject name[];//to store json object
-		Object o[];
+		
+		//to store array of object
+		Object tempObj[];
+		
 		try {
 
 			Object obj = parser.parse(new FileReader("/home/admin1/Desktop/Stock/stockinjson.json"));
+			
 			//System.out.println(obj);
 			JSONArray array=new JSONArray();
 			array=(JSONArray) obj;
+			
 			//System.out.println(array.size());
 			name=new JSONObject[array.size()];
-			o=new Object[array.size()];
-
+			
+			tempObj=new Object[array.size()];
+			
+			//pName=new String[array.size()];
+	
 			JSONObject jsonObject[]=new JSONObject[array.size()];
+			
 			int j=1;
 			for (int i = 0; i < array.size(); i++)
 			{
 
-				o[i]=array.get(i);
-
-				jsonObject[i]=(JSONObject) o[i];
+				tempObj[i]=array.get(i);
+				
+				//converting normal object as json
+				jsonObject[i]=(JSONObject) tempObj[i];
 
 				//System.out.println(jsonObject[i]);
 				String cat="Stock"+j;
@@ -206,7 +231,7 @@ public class CustomerInJson
 				JSONArray array1=new JSONArray();
 				array1=(JSONArray) obj1;
 
-
+				//loop for store cus details and stock detail
 				for (int i = 0; i < array.size(); i++)
 				{
 					System.out.println();
@@ -218,12 +243,16 @@ public class CustomerInJson
 					int share[]=c2.getProductShare();
 
 					System.out.print(" Product Share=[");
+					
+					//to print cus product share
 					for (int j = 0; j < share.length; j++) 
 					{
 						System.out.print(share[j]+" ");
 					}
 					System.out.print("]");
 					System.out.print(" Product Name=[");
+					
+					//to print cus product name
 					for (int j = 0; j < name.length; j++) 
 					{
 

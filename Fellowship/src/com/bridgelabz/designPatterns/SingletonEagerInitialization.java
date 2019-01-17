@@ -12,7 +12,9 @@ public class SingletonEagerInitialization
 	// instance is created even though client application might not be using it.
 	private static SingletonEagerInitialization instance = new SingletonEagerInitialization();
 
-	private SingletonEagerInitialization() {}
+	private SingletonEagerInitialization() {
+		System.out.println("instance creating...");
+	}
 
 	public SingletonEagerInitialization getSingltonEager()
 	{

@@ -8,7 +8,7 @@
  ******************************************************************************/ 
 package com.bridgelabz.stock.model;
 
-public class CustomerDetailsStockMan
+public class CustomerDetails
 {
 	private String name;
 	private int id;
@@ -26,10 +26,10 @@ public class CustomerDetailsStockMan
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getMobile_num() {
+	public String getnum() {
 		return num;
 	}
-	public void setMobile_num(String mobile_num) {
+	public void setnum(String mobile_num) {
 		this.num = mobile_num;
 	} 
 }
